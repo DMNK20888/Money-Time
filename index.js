@@ -1,31 +1,17 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App.jsx';
+import reportWebVitals from './reportWebVitals';
 
-const path = require('path');
-const express = require('express');
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
 
-const PORT = process.env.PORT || 3001;
-
-const app = express();
-
-// Handle GET requests to /api route
-app.get("/api", (req, res) => {
-    res.json({ message: "Hello from server!" });
-});
-
-app.listen(PORT, () => {
-    console.log('Server listening on ${PORT}');
-});
-
-//Have NODE serve the files for our built React app
-app.use(express.static(path.resolve(__dirname, '../client/public'))); //could be build
-
-
-
-// Have Node serve the files for our built React app
-//app.arguments(express.static(path.resolve(__dirname, '../client/build')));
-
-//All other GET requests not handled before will return our React app
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '.../client/build', 'index.html'));
-});
-
-
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
